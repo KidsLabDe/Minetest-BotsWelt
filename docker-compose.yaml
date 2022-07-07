@@ -1,0 +1,20 @@
+---
+version: "2.1"
+services:
+  minetest:
+    image: ghcr.io/linuxserver/minetest
+    container_name: minetest_code
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      # - CLI_ARGS=" --worldname ConnectionLost" 
+      - CLI_ARGS=" --worldname code --world worlds"
+      #- CLI_ARGS=" --worldname winter --world worlds"
+      # - CLI_ARGS=" --worldname Montagsbauer --world worlds"
+    volumes:
+      - /home/kingbbq/minetest_code/:/config/.minetest
+    ports:
+      - 30000:30000/udp
+    restart: unless-stopped
+
